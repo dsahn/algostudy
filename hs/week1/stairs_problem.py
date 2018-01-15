@@ -7,23 +7,17 @@
                 Develope a function that can calculate all the possible ways for a boy to walk up the stairs.
 '''
 
-def walking_up_the_stairs(total_steps, unit_steps):
-    answer = unit_steps**total_steps
-    value = walk_up_step(total_steps, unit_steps);
-    print "answer           : ", answer
-    print "calculated value : ", value
+def walking_up_the_stairs(total_steps):
+    value = walk_up_step(total_steps, 0);
+    print "  # of ways : ", value
 
-
-    
-    
-def walk_up_step(total_steps, unit_steps):
-    total_steps -= 1;
-    if total_steps<0 :
+def walk_up_step(n, unit_steps):
+    n -= unit_steps;
+    if   n == 0 :
         return 1
-    return walk_up_step(total_steps, unit_steps)*unit_steps
+    elif n <  0 :
+        return 0 
+    return walk_up_step(n, 1)+walk_up_step(n, 2)+walk_up_step(n, 3)
 
 
-unit_step          = 3
-total_num_of_steps = 3
-
-walking_up_the_stairs(total_num_of_steps, unit_step)
+walking_up_the_stairs(4)
