@@ -65,3 +65,8 @@ else
 ## 백트래킹 연습 문제
 
 풀기!
+
+## 기타 참고사항
+### memoization vs. dynamic programming
+* [http://new93helloworld.tistory.com/220?category=691028] 에 언급되어 있듯이, top-down approach로 하여금 재귀 중 캐싱하는 동작 자체는 memoization, bottom-up 방식으로 밑에서부터 순환하여 올라가는 방식을 dynamic programming으로 분류하였다. 어떠한 방식으로 풀어나가면 더 효율적일지 문제를 풀어 나가면서 생각해봐야 할 듯.
+* "순환식을 세우고 이것을 계산하는 과정 전체를 동적 계획법" 이라고 다음 페이지에 나와있다. 결국 두가지 다 동적계획법으로 분류할 수 있을듯. 더 자세한건 책을 확인해봐야겠다
