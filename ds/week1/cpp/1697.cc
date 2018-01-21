@@ -8,15 +8,9 @@ using namespace std;
 
 int solve(int n, int k)
 {
-    vector<int> dp(max(n,k)*2);
-    vector<int> visited(max(n,k)*2);
-    for(int& i : dp) {
-        i = 1000;
-    }
+    vector<int> dp(max(n,k)*2, 1000);
+    vector<int> visited(max(n,k)*2, -1);
     dp[n] = 0;
-    for(int& i : visited) {
-        i = -1;
-    }
     visited[n] = 1;
 
     for(int i = 0; i < abs(n - k); i++) {
