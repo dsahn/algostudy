@@ -43,8 +43,9 @@ int solve(int n, int k)
         }
 
         if (dp[k] != 1000)
-            return dp[k];
+            break;
     }
+    return dp[k];
 }
 
 int main(void) {
