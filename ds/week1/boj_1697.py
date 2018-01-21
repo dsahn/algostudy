@@ -10,6 +10,10 @@
 """
 
 
+"""
+재귀적인 방법으로 풀어보려 했으나, 잘 되지 않아(식이 잘 세워지지 않아) 
+그냥 2차원 루프를 돌리는게 좀 더 낫겠다 싶어서 짜봄.
+재귀적 방법도 여유가 되면 짜 볼 것.
 # sd : shortest distance array
 def solve_internal(n, k, cur, time, wasted):
     if wasted[cur] >= 0:
@@ -47,3 +51,61 @@ n = int(line.split(' ')[0])
 k = int(line.split(' ')[1])
 
 print(solve(n, k, [-1 for _ in range(100001)]))
+"""
+
+
+import sys
+
+
+def solve_internal(n, k):
+    # 둘 중 큰 숫자(동생이 앞, 뒤중 어디에 있을지 모르니까)를 택하여 2배(벗어날 수 있는 범위가 2배까지이므로)를
+    # dp의 큰 바운더리로 삼아보자
+    # dp는 cost time 값이 저장된다
+    dp = [sys.maxsize for _ in range(int(max(n, k) * 1.5))]
+
+    dp[n] = 0 # 시작점 초기화
+    visited = [-1 for _ in dp] # visited list : 단순히 dp의 maxsize가 아닌 값으로는 중복 계산하는 경우가 생겨서,
+                 # 방문한 경로에 대해서만 -1, +1, *2 의 계산을 해준다
+    visited[n] = 1
+    # i : 걸리는 시간값
+    # n - k 의 절대값 : 수민이가 이동하여 찾는 시간이 아무리 오래 걸려도 n - k (1칸씩 이동하여 동생을 찾는 경로)
+    # 보다는 빠르기 때문에 이 값을 루프의 회수로 삼고 돌린다
+    for i in range(0, int(abs(n - k)/2)):
+        for j in range(len(dp)):
+            # print("i: " + str(i) + ", j: " + str(j))
+            if visited[j] == 1:
+                dp[j - 1] = min(dp[j - 1], i + 1)
+                if visited[j - 1] <= 0:
+                    visited[j - 1] = 0
+                # prohibit out of range
+                if j + 1 < len(dp):
+                    dp[j + 1] = min(dp[j + 1], i + 1)
+                    if visited[j + 1] <= 0:
+                        visited[j + 1] = 0
+                # prohibit out of range
+                if j * 2 < len(dp):
+                    dp[j * 2] = min(dp[j * 2], i + 1)
+                    if visited[j * 2] <= 0:
+                        visited[j * 2] = 0
+        # for idx, s in enumerate(dp):
+        #     print(idx, s, end="), ")
+        # print("")
+        # for idx, s in enumerate(visited):
+        #     print(idx, s, end="), ")
+        # print("")
+        for l in range(len(visited)):
+            if visited[l] == 0:
+                # print("visited:", l, end=", ")
+                visited[l] = 1
+        # print("")
+    return dp[k]
+
+
+def solve(n, k):
+    return solve_internal(n, k)
+
+
+line = input()
+n_in = int(line.split(' ')[0])
+k_in = int(line.split(' ')[1])
+print(solve(n_in, k_in))
