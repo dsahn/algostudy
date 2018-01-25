@@ -16,8 +16,8 @@ class LinkedList:
             new_node.next = self.head
             self.head.prev.next = new_node
             self.head.prev = new_node
+        return new_node
 
-    # p, n : prev, next node
     def add_mid(self, data, pos):
         new_node = LinkedListNode(data)
         if self.head is None:
