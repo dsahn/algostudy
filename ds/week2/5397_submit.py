@@ -11,8 +11,8 @@ class LinkedList:
             new_node.next = self.head
             self.head.prev.next = new_node
             self.head.prev = new_node
+        return new_node
 
-    # p, n : prev, next node
     def add_mid(self, data, pos):
         new_node = LinkedListNode(data)
         if self.head is None:
@@ -51,12 +51,11 @@ class LinkedListNode(object):
 class StringList(LinkedList):
     def __init__(self):
         super().__init__()
-        self.pos = self.head
+        self.pos = self.add_back('POS')
 
     def remove_char(self):
         if self.pos == self.head:
-            self.head = None
-            self.pos = None
+            self.head = self.pos
         else:
             self.pos.prev.next = self.pos.next
             self.pos.next.prev = self.pos.prev
@@ -76,7 +75,7 @@ class StringList(LinkedList):
             if self.pos != self.head:
                 self.pos = self.pos.prev
         elif data == '>':
-            if self.pos != self.head.prev:
+            if self.pos != self.tail():
                 self.pos = self.pos.next
         elif data == '-':
             self.remove_char()
@@ -88,7 +87,8 @@ class StringList(LinkedList):
         if cur is None:
             return
         while True:
-            print(cur.data, end="")
+            if cur.data is not 'POS':
+                print(cur.data, end="")
             cur = cur.next
             if cur is self.head:
                 break
