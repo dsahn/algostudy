@@ -12,6 +12,10 @@ def _build_tree(in_list, pre_list, in_start, in_end):
     pre_char = pre_list.pop(0)
     index = in_list.index(pre_char)
     new_node= BinaryTreeNode(pre_char)
+    """
+    tree를 생성할 때에는 좌, 우 자식노드를 완성시키고, 노드를 반환하는 방식,
+    탐색할때에는 노드를 인자로 주던지 리턴하여 구성하는 식으로 하는듯?
+    """
     if index > in_start:
         new_node.left = _build_tree(in_list, pre_list, in_start, index)
     if index+1 < in_end:
