@@ -8,6 +8,10 @@ class BinaryTreeNode(object):
     def data(self):
         return self.__data
 
+    @data.setter
+    def data(self, data):
+        self.__data = data
+
     @property
     def left(self):
         return self.__left
@@ -24,7 +28,8 @@ class BinaryTreeNode(object):
 
     @right.setter
     def right(self, node):
-        if not isinstance(node, BinaryTreeNode):
+        if not isinstance(node, BinaryTreeNode) and node is not None:
+            print(node)
             raise TypeError
         self.__right = node
 
