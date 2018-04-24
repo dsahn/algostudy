@@ -31,13 +31,13 @@ bool is_counted(int *ba, char c) {
 
 /* bit array를 int 값 하나로 하려 했으나 통상 int는 4바이트이므로 32개의
  * 정보만 표현할 수 있다. 256개의 정보를 가지는 ascii는 표현할 수 없다.
- * NOTE 일단 1 bit 씩 가지는 알파벳 개수만큼의 array를 만들자.
+ * NOTE 일단 1 bit 씩 가지는 ascii 개수만큼의 array를 만들자.
  * */
 bool is_unique2(string input) {
-    vector<bool> bitarray(26, false);
+    vector<bool> bitarray(256, false);
 
     for (auto i = input.begin(); i != input.end(); i++) {
-        int index = *i - 'A';
+        int index = *i;
         if (bitarray[index] == false)
             bitarray[index] = true;
         else 
