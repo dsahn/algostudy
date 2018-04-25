@@ -26,16 +26,6 @@ void remove_dup(SingleLinkedList<char> char_list){
 }
 
 int main() {
-    /*
-    string s1 = "abcde";
-    string s2 = "abcdd";
-
-    bool val = is_unique2(s1);
-    cout << val << endl;
-
-    val = is_unique2(s2);
-    cout << val << endl;
-    */
     SingleLinkedList<char> char_list;
     char_list.push_back('a');
     char_list.push_back('b');
