@@ -11,15 +11,20 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <bitset>
 #include "linked_list.h"
 
 using namespace std;
 void remove_dup(SingleLinkedList<char> char_list){
-    vector<bool> ascii_counted(256, false);
+    bitset<256> ascii_counted;
     for (auto cur = char_list.head(); cur != nullptr; cur = cur->next) 
     {
         if(ascii_counted[cur->elem] == true) {
+			auto next = cur->next;
             char_list.remove(cur);
+			if (next == nullptr)
+				return;
+			cur = next;
         }
         ascii_counted[cur->elem] = true;
     }
