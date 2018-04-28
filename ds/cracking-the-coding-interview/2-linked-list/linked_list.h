@@ -5,8 +5,8 @@ template <typename T> class SinglePtrNode {
 public: 
     SinglePtrNode<T>(T data) : elem(data), next(nullptr) {}
 
-    SinglePtrNode<T>* next;
 	T elem;
+    SinglePtrNode<T>* next;	
 };
 
 template <typename T> class SingleLinkedList { 
