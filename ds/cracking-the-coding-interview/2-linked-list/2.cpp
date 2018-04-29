@@ -1,8 +1,8 @@
 /* 
-2. µÚ¿¡¼­ k ¹øÂ° ¿ø¼Ò Ã£±â ¹®Á¦
-Àü¿¡ ¾Ë°í¸®Áò Ã¥¿¡¼­ ÀÐ¾ú´ø ¹®Á¦¶û °°Àº ¹®Á¦.
-K¹øÂ°·Î ÀüÁø½ÃÅ² ³ëµåÆ÷ÀÎÅÍ ÇÏ³ª¿Í 0¹øÂ°ÀÇ Æ÷ÀÎÅÍ ÇÏ³ª¸¦ 
-°°ÀÌ ÀüÁø½ÃÅ°ÀÚ.
+2. ë’¤ì—ì„œ k ë²ˆì§¸ ì›ì†Œ ì°¾ê¸° ë¬¸ì œ
+ì „ì— ì•Œê³ ë¦¬ì¦˜ ì±…ì—ì„œ ì½ì—ˆë˜ ë¬¸ì œëž‘ ê°™ì€ ë¬¸ì œ.
+Kë²ˆì§¸ë¡œ ì „ì§„ì‹œí‚¨ ë…¸ë“œí¬ì¸í„° í•˜ë‚˜ì™€ 0ë²ˆì§¸ì˜ í¬ì¸í„° í•˜ë‚˜ë¥¼ 
+ê°™ì´ ì „ì§„ì‹œí‚¤ìž.
 */
 
 #include <iostream>
@@ -13,8 +13,8 @@ K¹øÂ°·Î ÀüÁø½ÃÅ² ³ëµåÆ÷ÀÎÅÍ ÇÏ³ª¿Í 0¹øÂ°ÀÇ Æ÷ÀÎÅÍ ÇÏ³ª¸¦
 using namespace std;
 
 void kth_elem(SingleLinkedList<int> int_list, int k) {
-	// k°¡ listÀÇ ÀüÃ¼ »çÀÌÁîº¸´Ù Å« Áö Ã¼Å©ÇÏ±â
-	// Ã¹¹øÂ°¸¦ k¸¸Å­ ÀüÁø½ÃÅ°±â
+	// kê°€ listì˜ ì „ì²´ ì‚¬ì´ì¦ˆë³´ë‹¤ í° ì§€ ì²´í¬í•˜ê¸°
+	// ì²«ë²ˆì§¸ë¥¼ kë§Œí¼ ì „ì§„ì‹œí‚¤ê¸°
 	auto front = int_list.head();
 	for (int i = 0; i < k; i++) {
 		if (front->next == nullptr) {
@@ -23,10 +23,10 @@ void kth_elem(SingleLinkedList<int> int_list, int k) {
 		}
 		front = front->next;
 	}
-	// µÎ¹øÂ°´Â headÀÓ
+	// ë‘ë²ˆì§¸ëŠ” headìž„
 	auto back = int_list.head();
 
-	// °°ÀÌ ÀüÁø½ÃÅ°±â
+	// ê°™ì´ ì „ì§„ì‹œí‚¤ê¸°
 	while (front->next != nullptr) {
 		front = front->next;
 		back = back->next;

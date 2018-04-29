@@ -1,8 +1,8 @@
 /*
-3. Áß°£¿¡ ÀÖ´Â ³ëµå ÇÏ³ª »èÁ¦ÇÏ´Â ¹®Á¦
-Áß°£ ±× ³ëµå¿¡¸¸ Á¢±ÙÇÏ´Â »óÈ²ÀÏ¶§ »èÁ¦ÇÏ±â
-elem, next°ªÀ» ¾Æ¿¹ copy ÇØ¹ö¸®°í 
-±× ´ÙÀ½ ³ëµå(next¿¡ Á¢±Ù) »èÁ¦ÇÏÀÚ.
+3. ì¤‘ê°„ì— ìžˆëŠ” ë…¸ë“œ í•˜ë‚˜ ì‚­ì œí•˜ëŠ” ë¬¸ì œ
+ì¤‘ê°„ ê·¸ ë…¸ë“œì—ë§Œ ì ‘ê·¼í•˜ëŠ” ìƒí™©ì¼ë•Œ ì‚­ì œí•˜ê¸°
+elem, nextê°’ì„ ì•„ì˜ˆ copy í•´ë²„ë¦¬ê³  
+ê·¸ ë‹¤ìŒ ë…¸ë“œ(nextì— ì ‘ê·¼) ì‚­ì œí•˜ìž.
 */
 
 #include <iostream>
