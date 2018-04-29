@@ -11,7 +11,7 @@ public:
 
 template <typename T> class SingleLinkedList { 
 public:
-    SingleLinkedList<T>() : _head(nullptr), _tail(nullptr) {}
+    SingleLinkedList<T>() : _head(nullptr), _tail(nullptr), _size(0) {}
 
     void push_back(T data) {
         SinglePtrNode<T>* new_node = new SinglePtrNode<T>(data);
@@ -22,6 +22,7 @@ public:
             _tail->next = new_node;
             _tail = new_node;
         }
+        ++_size;
     }
 
     operator const char*() {
@@ -56,11 +57,16 @@ public:
             if(cur == dst) {
                 prev->next = cur->next;
                 delete cur;
+                --_size;
 				return;
             }
             prev = cur;
         }
     }
+
+    int size() { return _size; }
+
+    void set_head(SinglePtrNode<T>* ptr) { _head = ptr; }
 
     /* bool find(T data) {
         for (auto cur = _head; cur != nullptr; cur = cur->next) {
@@ -76,4 +82,5 @@ public:
 private:
     SinglePtrNode<T>* _head;
     SinglePtrNode<T>* _tail; 
+    int _size;
 };
