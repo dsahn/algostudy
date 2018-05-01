@@ -25,6 +25,18 @@ public:
         ++_size;
     }
 
+    void push_front(T data) {
+        SinglePtrNode<T>* new_node = new SinglePtrNode<T>(data);
+
+        if (_head == nullptr)
+            _head = _tail = new_node;
+        else {
+            new_node->next = _head;
+            _head = new_node;
+        }
+        ++_size;
+    }
+
     operator const char*() {
         /* 동작이 비효율적이지만 일단 테스트용 */
         std::string ret;
