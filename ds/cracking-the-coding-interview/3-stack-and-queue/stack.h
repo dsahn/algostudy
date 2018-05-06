@@ -6,7 +6,10 @@ class VectorStack
 public:
     VectorStack() : _vec(), _offset(-1) {}
 
-    bool is_empty() { return _vec.empty(); } 
+    bool is_empty() { return _vec.empty(); }
+	int index() { return _offset; }
+	// XXX full size를 허용할 것인지?
+
     virtual void push(T data) {
         _vec.push_back(data);
         ++_offset;
@@ -22,6 +25,17 @@ public:
         // XXX check if (is_empty()) 
         return _vec.at(_offset);
     }
+
+	void print() {
+		if (is_empty())
+			std::cout << "empty!" << std::endl;
+		else {
+			for (int i = 0; i <= _offset; i++) {
+				std::cout << _vec.at(_offset) << ",";
+			}
+			std::cout << "\n";
+		}
+	}
 
 private:
     std::vector<T> _vec;

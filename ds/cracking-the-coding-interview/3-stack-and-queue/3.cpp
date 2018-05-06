@@ -9,6 +9,8 @@
  * - 시프팅 시키던지? 아니면 그대로 놔두고 push/pop은 마지막거에서 이어서
  *   하던지.
  * - 후자로 일단 구현해보자.
+ *
+ * vs에서 디버깅이 잘 안되어 일단 리눅스로 가자
  *   */
 #include <iostream>
 #include <string>
@@ -16,22 +18,50 @@
 
 template<typename T>
 class SetOfStacks {
-    SetOfStacks(int height) : height_(height) {}
+public:
+    SetOfStacks(int height) : _height(height), _width(0), _stacks() {}
+	T pop() {
+		// if empty, decrease width
+		// pop_at으로 다 소진되었을 수도 있으니까 loop 돌리자
+		while (_stacks.at(_width).is_empty()) 			
+			--_width;
+		// return data
+		return _stacks.at(_width).pop();
+	}
+	void push(T data) {
+		// if full, increase width
+		if (_stacks.at(_width).index() >= _height)
+			++_width;
+		// insert data
+		_stacks.at(_width).push(data);
+		return;
+	}
+	// void pop_at(int idx) {}
+	void print() {
+		for (int i = 0; i < _width; i++) {
+			cout << "Stack " << i << endl;
+			_stacks.at(i).print();
+		}
+		cout << endl;
+	}
 private:
     int _width;  //내부적으로 유지되는 스택의 개수
     int _height; //접시 더미의 최대 높이
-    std::vector<VectorStack> _stacks;
+    std::vector<VectorStack<T>> _stacks;
 };
 
+using namespace std;
+
 int main() {
-    SetOfStacks<int> stacks;
+    SetOfStacks<int> stacks(3);
 
     stacks.push(3);
     stacks.push(2);
     stacks.push(1);
     stacks.push(3);
     stacks.push(2);
-    cout << stacks.min() << endl;
+    // cout << stacks.min() << endl;
+	stacks.print();
 
     return 0;
 }
