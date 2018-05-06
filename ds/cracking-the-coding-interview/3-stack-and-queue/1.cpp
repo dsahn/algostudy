@@ -12,7 +12,7 @@
 #include "stack.h"
 using namespace std;
 
-class Threestack
+// class Threestack
 
 int main() {
     return 0;
