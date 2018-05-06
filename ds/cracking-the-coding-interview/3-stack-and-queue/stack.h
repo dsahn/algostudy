@@ -12,8 +12,15 @@ public:
         ++_offset;
     } 
     virtual T pop() {
+        // XXX check if (is_empty()) 
         --_offset;
-        return _vec.pop_back(); 
+        T data = _vec.back();
+        _vec.pop_back();
+        return data;
+    }
+    virtual T peek() {
+        // XXX check if (is_empty()) 
+        return _vec.at(_offset);
     }
 
 private:
