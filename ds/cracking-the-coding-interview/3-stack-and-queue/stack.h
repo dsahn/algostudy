@@ -8,7 +8,7 @@ public:
 
     bool is_empty() { return _vec.empty(); }
 	int index() { return _offset; }
-	// XXX full size¸¦ Çã¿ëÇÒ °ÍÀÎÁö?
+	// XXX full sizeë¥¼ í—ˆìš©í•  ê²ƒì¸ì§€?
 
     virtual void push(T data) {
         _vec.push_back(data);
@@ -31,7 +31,7 @@ public:
 			std::cout << "empty!" << std::endl;
 		else {
 			for (int i = 0; i <= _offset; i++) {
-				std::cout << _vec.at(_offset) << ",";
+				std::cout << _vec.at(i) << ",";
 			}
 			std::cout << "\n";
 		}
