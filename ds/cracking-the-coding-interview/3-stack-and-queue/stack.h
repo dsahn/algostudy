@@ -25,6 +25,10 @@ public:
         // XXX check if (is_empty()) 
         return _vec.at(_offset);
     }
+    virtual T peek(int idx) {
+        // XXX check if (is_empty()) 
+        return _vec.at(idx);
+    }
 
 	void print() {
 		if (is_empty())
