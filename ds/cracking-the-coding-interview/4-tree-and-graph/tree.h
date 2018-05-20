@@ -3,6 +3,8 @@ struct BinTreeNode {
     T elem;
     BinTreeNode<T>* left;
     BinTreeNode<T>* right;
+
+    BinTreeNode<T>(T data) : elem(data), left(nullptr), right(nullptr) {};
 };
 
 
