@@ -6,7 +6,7 @@
  * 다음에 그 중간 값을 기준으로 left, right 트리를 차례대로 만들면 되는 문제.
  *
  * fail1 : segfault 발생
- *   0, 1 두개의 노드만 남았을 때 트리를 만드는 경우를 생각하여 구성해보자..  
+ *   0, 1 두개의 노드만 남았을 때 트리를 만드는 경우를 생각하여 구성해보자..
  *   이 부분이 문제가 된다.
  *   --> 일반적으로 begin > end 일 때만 재귀를 탈출시키면 된다.
  *       begin == end 의 경우는 leaf node에 해당된다.
@@ -20,11 +20,11 @@ typedef BinTreeNode<int> intnode;
 
 /* 재귀로 본 문제를 푸는 부분. 출력 부분을 vec_to_tree 에서 수행하기 때문에 
  * 이렇게 구성함 */
-intnode* _vec_to_tree(vector<int> v, int beg, int end) { 
+intnode* _vec_to_tree(vector<int> v, int beg, int end) {
     if (beg > end) 
         return nullptr;
     
-    int mid = ((beg + end) / 2); 
+    int mid = ((beg + end) / 2);
 
     intnode* root = new intnode(v.at(mid));
     root->left = _vec_to_tree(v, beg, mid-1);
