@@ -9,9 +9,22 @@ struct BinTreeNode {
 
     BinTreeNode<T>(T data) : elem(data), left(nullptr), right(nullptr) {};
     void print() {
-        std::cout << elem << ", ";
-        left->print();
-        right->print();
+        // std::cout << "elem:"<< elem ;
+        std::cout << elem;
+        if (left != nullptr || right != nullptr)
+            std::cout << "(";
+        if (left != nullptr) {
+            std::cout << "left:(";
+            left->print();
+            std::cout << ")";
+        }
+        if (right != nullptr) {
+            std::cout << "right:(";
+            right->print();
+            std::cout << ")";
+        }
+        if (left != nullptr || right != nullptr)
+            std::cout << ")";
     }
 };
 
