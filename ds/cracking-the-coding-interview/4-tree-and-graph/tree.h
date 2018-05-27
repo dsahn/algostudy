@@ -1,14 +1,17 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
 
 template <typename T>
 struct BinTreeNode {
     T elem;
     BinTreeNode<T>* left;
     BinTreeNode<T>* right;
+    int _depth;
 
-    BinTreeNode<T>(T data) : elem(data), left(nullptr), right(nullptr) {};
+    BinTreeNode<T>(T data) : elem(data), left(nullptr), right(nullptr), _depth(-1) {};
+
     void print() {
         // std::cout << "elem:"<< elem ;
         std::cout << elem;
@@ -26,6 +29,17 @@ struct BinTreeNode {
         }
         if (left != nullptr || right != nullptr)
             std::cout << ")";
+    }
+    int depth() {
+        if (_depth != -1)
+            return _depth;
+
+        int left_depth = 0, right_depth = 0;
+        if (left != nullptr)
+            left_depth = left->depth();
+        if (right != nullptr)
+            right_depth = right->depth();
+        return 1 + std::max(left_depth, right_depth);
     }
 };
 
